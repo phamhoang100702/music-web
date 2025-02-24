@@ -1,6 +1,6 @@
 import { getLocalStorage } from "../localStorage";
 
-const API_DOMAIN = "http://localhost:9000/api/v1/";
+const API_DOMAIN = "http://localhost:8888/api/v1/";
 
 export const get = async (path) => {
   const response = await fetch(API_DOMAIN + path, {
@@ -35,6 +35,18 @@ export const put = async (path, options) => {
       'Authorization' : `Bearer ${getLocalStorage('user-token')}`
     },
     body: JSON.stringify(options),
+  });
+  return await response.json();
+};
+
+
+export const put_form_data = async (path, options) => {
+  const response = await fetch(API_DOMAIN + path, {
+    method: "PUT",
+    body: options,
+    headers: {
+      'Authorization' : `Bearer ${getLocalStorage('user-token')}`
+    },
   });
   return await response.json();
 };

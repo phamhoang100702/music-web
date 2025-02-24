@@ -99,7 +99,7 @@ const CardFollowingOfLibrary = (props) => {
                 icon={<SlUserFollow/>}
                 onClick={() => {
                   setFollow(!follow);
-                  addFollow(authInfo.id, item.id);
+                  addFollow(item.id);
                 }}
               >
                 Follow
@@ -112,7 +112,7 @@ const CardFollowingOfLibrary = (props) => {
                 icon={<SlUserUnfollow/>}
                 onClick={() => {
                   setFollow(!follow);
-                  removeFollow(authInfo.id, item.id);
+                  removeFollow(item.id);
                 }}
               >
                 Unfollow

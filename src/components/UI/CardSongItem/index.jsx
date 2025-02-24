@@ -8,12 +8,12 @@ const CardSongItem = (props) => {
       <List.Item className="song-item-list-a">
         <List.Item.Meta
           avatar={
-            item.avatar ?
+            item.thumbnail ?
               (
                 <Avatar
                   size={"large"}
                   shape="square"
-                  src={item.avatar}
+                  src={item.thumbnail}
                 />
               ) : (
                 <Avatar
@@ -32,7 +32,7 @@ const CardSongItem = (props) => {
             >
               <div>
                 <a className="display-name-song-of-playlist">
-                  {item.name}
+                  {item.title}
                 </a>
                 {" - "}
                 <a
@@ -53,7 +53,7 @@ const CardSongItem = (props) => {
               </div>
             </div>
           }
-          description={`release date: ${item.createdDate.slice(0, 10)}`}
+          description={`release date: ${item.releasedDate.slice(0, 10)}`}
         />
       </List.Item>
     </>

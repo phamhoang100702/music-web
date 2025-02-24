@@ -13,7 +13,7 @@ const TracksOfSinger = (props) => {
       const data = (await getAllSongBySingerId(singerProfile.id))?.content;
       if (data) {
         if (authInfo.id === singerProfile.id) setListSong(data);
-        else setListSong(data.filter(i => i.status === 2));
+        else setListSong(data.filter(i => i.visible === true));
       }
     })()
   }, [singerProfile]);

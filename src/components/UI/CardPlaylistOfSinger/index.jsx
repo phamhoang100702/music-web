@@ -24,16 +24,16 @@ const CardPlaylistOfSinger = (props) => {
   useEffect(() => {
     (async () => {
       const data = (await getAllSongByPlaylistId(item.id)).content;
-      setListSongOfPlaylist(data.filter(i => i.status === 2));
+      setListSongOfPlaylist(data.filter(i => i.visible === true));
     })();
   }, [item.id]);
   return (
     <>
       <Col span={4}>
-        {listSongOfPlaylist[0]?.avatar ?
+        {listSongOfPlaylist[0]?.thumbnail ?
           (
             <img
-              src={listSongOfPlaylist[0]?.avatar}
+              src={listSongOfPlaylist[0]?.thumbnail}
               style={{
                 width: "100%",
                 aspectRatio: "1/1",
@@ -56,7 +56,7 @@ const CardPlaylistOfSinger = (props) => {
           )
         }
         <span onClick={() => navigate(`/list-song-of-playlist/${item.id}`)}
-              style={{cursor: "pointer", color: "#2c2c2c", fontSize: 22, fontWeight: 700}}>{item.name}</span>
+              style={{cursor: "pointer", color: "#2c2c2c", fontSize: 22, fontWeight: 700}}>{item.title}</span>
       </Col>
       <Col span={20}>
         <div
@@ -111,12 +111,12 @@ const CardPlaylistOfSinger = (props) => {
                 <List.Item className="song-item-list-a" key={ind}>
                   <List.Item.Meta
                     avatar={
-                      i.avatar ?
+                      i.thumbnail ?
                         (
                           <Avatar
                             size={"small"}
                             shape="square"
-                            src={i.avatar}
+                            src={i.thumbnail}
                           />
                         ) : (
                           <Avatar

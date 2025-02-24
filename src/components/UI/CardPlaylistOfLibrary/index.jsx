@@ -126,7 +126,7 @@ const CardPlaylistOfLibrary = (props) => {
             </div>
           </>
         )}
-        {allSong.content && allSong.content[0].avatar ?
+        {allSong.content && allSong.content[0].thumbnail ?
           (
             <img
               src={allSong.content[0].avatar}

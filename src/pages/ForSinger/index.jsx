@@ -21,20 +21,20 @@ const ForSinger = () => {
       ),
       children: <UploadSongOfSinger reload={reload} setReload={setReload}/>,
     },
+    // {
+    //   key: "2",
+    //   label: (
+    //     <a
+    //       className="tab-label ant-tabs-tab ant-tabs-tab  ant-tabs-tab-btn"
+    //       style={{fontSize: 24}}
+    //     >
+    //       Create Album
+    //     </a>
+    //   ),
+    //   children: <CreateAlbumOfSinger/>,
+    // },
     {
       key: "2",
-      label: (
-        <a
-          className="tab-label ant-tabs-tab ant-tabs-tab  ant-tabs-tab-btn"
-          style={{fontSize: 24}}
-        >
-          Create Album
-        </a>
-      ),
-      children: <CreateAlbumOfSinger/>,
-    },
-    {
-      key: "3",
       label: (
         <a
           className="tab-label ant-tabs-tab ant-tabs-tab  ant-tabs-tab-btn"

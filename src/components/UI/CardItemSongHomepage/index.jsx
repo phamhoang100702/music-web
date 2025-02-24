@@ -46,11 +46,11 @@ const CardItemSongHomepage = (props) => {
         size="small"
         cover={
           <>
-            {listSongOfPlaylist[0]?.avatar ?
+            {listSongOfPlaylist[0]?.thumbnail ?
               (
                 <img
                   alt="example"
-                  src={listSongOfPlaylist[0].avatar}
+                  src={listSongOfPlaylist[0].thumbnail}
                   style={{
                     width: 160,
                     height: 160,

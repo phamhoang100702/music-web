@@ -27,8 +27,9 @@ const ListSongOfPlaylist = () => {
     (async () => {
       const data = (await getPlaylistByPlaylistId(playlistId)).content;
       setPlaylistDetail(data);
-      const data1 = (await getAllSongByPlaylistId(playlistId)).content;
-      if (data.creator?.id === authInfo.id) setListSongOfPlaylist(data1);
+      console.log("data : ",data);
+      const data1 = data.songSet;
+      if (data.ownerId === authInfo.id) setListSongOfPlaylist(data1);
       else setListSongOfPlaylist(data1.filter(i => i.status === 2));
     })();
   }, [playlistId]);
@@ -137,10 +138,10 @@ const ListSongOfPlaylist = () => {
                 }}
               >
                 {
-                  listSongOfPlayList[0]?.avatar ?
+                  listSongOfPlayList[0]?.thumbnail ?
                     (
                       <img
-                        src={listSongOfPlayList[0].avatar}
+                        src={listSongOfPlayList[0].thumbnail}
                         style={{
                           width: 340,
                           height: 340,
@@ -173,12 +174,12 @@ const ListSongOfPlaylist = () => {
               <List.Item className="song-item-list-a" key={index}>
                 <List.Item.Meta
                   avatar={
-                    item.avatar ?
+                    item.thumbnail ?
                       (
                         <Avatar
                           size={"small"}
                           shape="square"
-                          src={item.avatar}
+                          src={item.thumbnail}
                         />
                       ) : (
                         <Avatar
@@ -197,7 +198,7 @@ const ListSongOfPlaylist = () => {
                     >
                       <div>
                         <a className="display-name-song-of-playlist">
-                          {item.name}
+                          {item.title}
                         </a>
                         {" - "}
                         <a
@@ -206,7 +207,7 @@ const ListSongOfPlaylist = () => {
                         >
                           {item.singers.map((i, ind) => <span onClick={() => navigate(`/singer-profile/${i.id}`)}
                                                               key={ind}
-                                                              className={"hover-decoration"}>{`${i.name}, `}</span>)}
+                                                              className={"hover-decoration"}>{`${i.title}, `}</span>)}
                         </a>
                       </div>
 

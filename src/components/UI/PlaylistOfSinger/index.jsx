@@ -12,7 +12,7 @@ const PlaylistOfSinger = (props) => {
     (async () => {
       const data = (await getAllPlaylistByUserId(singerProfile.id)).content;
       if (authInfo.id === singerProfile.id) setListPlaylist(data);
-      else setListPlaylist(data.filter(i => i.status === true));
+      else setListPlaylist(data.filter(i => i.visible === true));
     })();
   }, [singerProfile.id]);
   return (

@@ -20,12 +20,13 @@ export const savePlaylistForMainPage = async (object) => {
   };
   return await post("playlist", playlist);
 };
-export const getFavoritePlaylistByUserId = async (userId) => {
-  return await get(`user/${userId}/playlist/favorite`);
+export const getFavoritePlaylistByUserId = async () => {
+  return await get(`playlist/favorite`);
 };
 
 export const getAllPlaylistByUserId = async (userId) => {
-  return await get(`user/${userId}/playlist`);
+  console.log("userId + ", userId);
+  return await get(`playlist/get-owned-playlist/${userId}`);
 };
 
 // main page user/ censor
@@ -33,8 +34,8 @@ export const getAllMainpagePlayList = async () => {
   return await get("playlist/mainpage");
 };
 // search for user
-export const searchAllPlaylistByNameForUser = async (name) => {
-  return await get(`user/playlist?name=${name}`);
+export const searchAllPlaylistByNameForUser = async (keyword = "",page = 0, size = 10) => {
+  return await get(`playlist?keyword=${keyword}&size=${size}&page=${page}`);
 };
 
 export const updatePlaylist = async (options) => {
@@ -46,8 +47,8 @@ export const deletePlaylist = async (playlistId) => {
 };
 
 // get all  Song
-export const getAllSongByPlaylistId = async (playlistId) => {
-  return await get(`playlist/${playlistId}/song`);
+export const getAllSongByPlaylistId = async (id) => {
+  return await get(`playlist/song/${id}`);
 };
 
 export const addSongToPlaylist = async (playlistId, songId) => {
@@ -67,18 +68,10 @@ export const getTotalPlaylist = async () => {
 };
 
 
-export const addSongToFavoritePlaylist = async (userId, songId) => {
-  return await post(`user/${userId}/playlist/favorite/${songId}`, {});
+export const addSongToFavoritePlaylist = async (songId) => {
+  return await post(`playlist/favorite/${songId}`, {});
 };
 
-export const removeSongToFavoritePlaylist = async (userId, songId) => {
-  return await del(`user/${userId}/playlist/favorite/${songId}`)
-}
-
-export const saveFavoritePlaylist = async (object) => {
-  object = {
-    ...object,
-    role: "FAVORITE"
-  }
-  return await post(`playlist`, object);
+export const removeSongToFavoritePlaylist = async (songId) => {
+  return await del(`playlist/favorite/${songId}`)
 }

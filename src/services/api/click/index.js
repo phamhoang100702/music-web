@@ -1,18 +1,18 @@
 import {post,get} from "../../utils"
 
-export const saveClick = async(object)=>{
-    return await post("click",object);
+export const saveListen = async(object)=>{
+    return await post("listen",object);
 }
 
 export const countClickByDay = async ()=>{
-    return await get("click/day");
+    return await get("listen/top-of-the-day");
 }
 
 export const countClickByMonth =async ()=>{
-    return await get("click/month");
+    return await get("listen/top-of-the-month");
 }
 export const countClickByWeek = async()=>{
-    return await get("click/week");
+    return await get("listen/top-of-the-week");
 }
 
 export const countClickAll =async ()=>{

@@ -14,10 +14,10 @@ export const handleSongQueue = (state = {songQueue: []}, actions) => {
       return {
         songQueue: [{
           ...actions.theSongNeedToPlay,
-          musicSrc: actions.theSongNeedToPlay.fileSound,
-          cover: actions.theSongNeedToPlay.avatar ? actions.theSongNeedToPlay.avatar : "https://play-lh.googleusercontent.com/D9X7m5dTNzjeSPxBqzh1RwrZLXJDFTpht9-8W8RJtiaOAlFxNvL5MnSDRxoDnQRYhz0",
+          musicSrc: actions.theSongNeedToPlay.sound,
+          cover: actions.theSongNeedToPlay.thumbnail ? actions.theSongNeedToPlay.thumbnail : "https://play-lh.googleusercontent.com/D9X7m5dTNzjeSPxBqzh1RwrZLXJDFTpht9-8W8RJtiaOAlFxNvL5MnSDRxoDnQRYhz0",
           singer: actions.theSongNeedToPlay.singers.map(i => i.name).join(", "),
-          lyric: actions.theSongNeedToPlay.fileLyric
+          lyric: actions.theSongNeedToPlay.lyric
         }],
         clearPriorAudioLists: true
       }
@@ -26,10 +26,10 @@ export const handleSongQueue = (state = {songQueue: []}, actions) => {
         songQueue: actions.theListNeedToPlay.map(i => {
           return {
             ...i,
-            musicSrc: i.fileSound,
-            cover: i.avatar ? i.avatar : "https://play-lh.googleusercontent.com/D9X7m5dTNzjeSPxBqzh1RwrZLXJDFTpht9-8W8RJtiaOAlFxNvL5MnSDRxoDnQRYhz0",
+            musicSrc: i.sound,
+            cover: i.thumbnail ? i.thumbnail : "https://play-lh.googleusercontent.com/D9X7m5dTNzjeSPxBqzh1RwrZLXJDFTpht9-8W8RJtiaOAlFxNvL5MnSDRxoDnQRYhz0",
             singer: i.singers.map(i => i.name).join(", "),
-            lyric: i.fileLyric
+            lyric: i.lyric
           }
         }),
         clearPriorAudioLists: true
@@ -55,10 +55,10 @@ export const handleSongQueue = (state = {songQueue: []}, actions) => {
         songQueue: [...state.songQueue, ...(actions.theListNeedToAdd.map(item => {
           return {
             ...item,
-            musicSrc: item.fileSound,
-            cover: item.avatar ? item.avatar : "https://play-lh.googleusercontent.com/D9X7m5dTNzjeSPxBqzh1RwrZLXJDFTpht9-8W8RJtiaOAlFxNvL5MnSDRxoDnQRYhz0",
-            singer: item.singers.map(i => i.name).join(", "),
-            lyric: item.fileLyric
+            musicSrc: item.sound,
+            cover: item.thumbnail ? item.thumbnail : "https://play-lh.googleusercontent.com/D9X7m5dTNzjeSPxBqzh1RwrZLXJDFTpht9-8W8RJtiaOAlFxNvL5MnSDRxoDnQRYhz0",
+            singer: item.singers.map(i => i.title).join(", "),
+            lyric: item.lyric
           }
         }))],
         clearPriorAudioLists: false

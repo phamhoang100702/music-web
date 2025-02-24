@@ -1,14 +1,9 @@
 import {del, get, post} from "../../utils"
 
-// m phai them ca singer vao cai tk tao ra album ay 
+// m phai them ca singer vao cai tk tao ra album ay
 export const addAlbum = async (object) => {
   return await post("album", object);
 }
-
-export const getAllAlbum = async () => {
-  return await get("album")
-}
-
 export const getAlbumById = async (id) => {
   return await get(`album/${id}`)
 }

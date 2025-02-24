@@ -15,8 +15,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { IoMdClose } from "react-icons/io";
 import { debounce } from "../../../helpers/debounce/index.js";
 import {
-  getAllActiveSong,
-  getSongByName,
+  getAllActiveSong
 } from "../../../services/api/song/index.js";
 import {
   addSongsToPlaylist,

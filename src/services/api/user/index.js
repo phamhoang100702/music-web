@@ -1,28 +1,32 @@
-import {get,put,post,del} from "../../utils"
+import {get, put, post, del, put_form_data} from "../../utils"
 
-export const searchAllUser = async(name) => {
+export const searchAllUser = async (name) => {
     return await get(`user?name=${name}`);
 }
 
-export const getUserById = async(id) => {
+export const getUserById = async (id) => {
     return await get(`user/${id}`);
 }
 
-export const addUser = async(obj) =>{
-    return await post(`user`,obj)
+export const updateUser = async (obj) => {
+    return await put(`user`, obj);
 }
 
-export const updateUser = async(obj) =>{
-    return await put(`user`,obj);
-}
-export const deleteUserById = async(id)=>{
-    return await del(`user/${id}`)
+export const updateUserWithFormData = async (obj) => {
+    return await put_form_data('user/change-information', obj);
 }
 
-export const getTotalUser = async()=>{
-    return await get(`user/count`)
+export const changePassword = async (obj) => {
+    return await put("user/change-password", obj);
 }
 
-export const getHistoryByUserId =async (userId)=>{
-    return await get(`click/history/user/${userId}`);
+
+export const getHistoryByUserId = async (id) => {
+    return await get(`listen/history/${id}`);
+}
+
+export const getUserInformation = async (token) => {
+    return await post("user/information", {
+        token: token
+    })
 }

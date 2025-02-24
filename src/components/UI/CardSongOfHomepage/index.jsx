@@ -16,20 +16,23 @@ const CardSongOfHomepage = (props) => {
   const handlePlayNow = () => {
     dispatch(playOneSongNow(itemSong));
   }
+  console.log("item song: ", itemSong.title);
   const handleAddToQueue = () => {
     dispatch(addOneSong(itemSong));
   }
-  useEffect(() => {
+
+    useEffect(() => {
     (async () => {
       try {
         // await fetch('https://mybucketmusic.s3.ap-south-1.amazonaws.com/song/avatars/9cadbfb7f41d45e6aa1cedbef1eb919b.png').then(obj => console.log(obj));
         // const color = await fac.getColorAsync(itemSong.avatar + "");
         // setAverageColor(color.hex);
+          console.log("itemSong " + itemSong);
       } catch (e) {
         console.log(e);
       }
     })()
-  }, [fac, itemSong.avatar]);
+  }, [fac, itemSong.thumbnail]);
   return (
     <div
       style={{
@@ -73,11 +76,11 @@ const CardSongOfHomepage = (props) => {
         size="small"
         cover={
           <>
-            {itemSong.avatar ?
+            {itemSong.thumbnail ?
               (
                 <img
                   alt="example"
-                  src={itemSong.avatar}
+                  src={itemSong.thumbnail}
                   style={{
                     userSelect: "none",
                     width: 160,
@@ -123,7 +126,7 @@ const CardSongOfHomepage = (props) => {
         <Card.Meta
           title={
             <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: "2px 0"}}>
-              <span style={{overflow: "hidden", textOverflow: "ellipsis"}} title={itemSong.name}>{itemSong.name}</span>
+              <span style={{overflow: "hidden", textOverflow: "ellipsis"}} title={itemSong.title}>{itemSong.title}</span>
               <Tooltip
                 placement={"topLeft"}
                 title={<span style={{color: "#222222"}}>Add to queue</span>}

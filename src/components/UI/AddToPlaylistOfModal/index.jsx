@@ -33,8 +33,8 @@ const ItemPlaylist = (props) => {
   useEffect(() => {
     (async () => {
       const obj = await getAllSongByPlaylistId(item.id);
-      if (obj.content) setAllSongOfPlaylist(obj.content);
-      if (obj.content.findIndex(i => i.id === songTarget.id) !== -1) setIsAdded(true);
+      if (obj.data) setAllSongOfPlaylist(obj.content);
+      if (obj.data.findIndex(i => i.id === songTarget.id) !== -1) setIsAdded(true);
     })();
   }, []);
   return (

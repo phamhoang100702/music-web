@@ -11,10 +11,9 @@ import {
 import {useState} from "react";
 import {FaLock, FaLockOpen, FaUser} from "react-icons/fa";
 import {Link, useNavigate} from "react-router-dom";
-import {singerRegister, userRegister} from "../../services/api/auth";
+import {userRegister} from "../../services/api/auth";
 import {useDispatch} from "react-redux";
 import {login} from "../../redux/actions/auth";
-import {saveFavoritePlaylist} from "../../services/api/playlist";
 
 const Register = () => {
     const [status, setStatus] = useState("1");
@@ -39,6 +38,8 @@ const Register = () => {
                         username: email,
                         password: password,
                         roles: "USER"
+                    }).catch((e) => {
+                        setLoading(false)
                     });
                     if (infomation.status === "BAD_REQUEST") setAlert(infomation.message);
                     else {
@@ -60,13 +61,14 @@ const Register = () => {
                     setLoading(true);
                     let infomation = await userRegister({
                         name: name,
-                        email: email,
+                        username: email,
                         password: password,
                         roles: "SINGER,USER"
+                    }).catch((e) => {
+                        setLoading(false);
                     });
                     if (infomation.status === "BAD_REQUEST") setAlert(infomation.message);
                     else {
-                        await saveFavoritePlaylist(infomation.content);
                         dispatch(login(infomation.content));
                         navigate("/login");
                     }
