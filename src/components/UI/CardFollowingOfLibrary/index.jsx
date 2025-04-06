@@ -22,7 +22,7 @@ const CardFollowingOfLibrary = (props) => {
   useEffect(() => {
     (async () => {
       const obj = await getListFollower(item.id);
-      setFollower(obj.content ? obj.content.length : 0);
+      setFollower(obj.content ? obj.content : 0);
     })()
   }, []);
   return (

@@ -60,7 +60,7 @@ const CardItemSongHomepage = (props) => {
               ) : (
                 <img
                   alt="example"
-                  src="https://cdn.smehost.net/dailyrindblogcom-orchardprod/wp-content/uploads/2016/03/playlist2.png"
+                  src="https://soundtify.s3.ap-southeast-1.amazonaws.com/default/playlist2.png"
                   style={{
                     width: 160,
                     height: 160,

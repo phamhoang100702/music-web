@@ -53,7 +53,7 @@ const FooterUserLayoutAudioPlayer = () => {
         >
             <ReactJkMusicPlayer
                 audioLists={songQueueHaveLyric}
-                theme={"dark"}
+                theme={"auto"}
                 volumeFade={{
                     fadeIn: 1000,
                     fadeOut: 1000
@@ -66,7 +66,7 @@ const FooterUserLayoutAudioPlayer = () => {
                     dispatch(changeSourceLyric(audioInfo.lyric));
                 }}
                 renderAudioTitle={(audioInfo) => {
-                    return <span>{`${audioInfo.name} - `}<span>{audioInfo.singers && audioInfo.singers.map((i, ind) =>
+                    return <span>{`${audioInfo.title} - `}<span>{audioInfo.singers && audioInfo.singers.map((i, ind) =>
                         <span
                             key={ind} className={"hover-decoration"} style={{cursor: "pointer"}}
                             onClick={() => navigate(`/singer-profile/${i.id}`)}>{i.name}, </span>)}</span></span>
@@ -96,8 +96,9 @@ const FooterUserLayoutAudioPlayer = () => {
                         <Switch checked={lyricObj.statusLyric === 'on'} size="small" title={"Show lyric"}
                                 onChange={(e) => dispatch(lyricStatusChange(e ? 'on' : 'off'))}/>
                         <Tooltip title="Download">
+
                             <Button disabled={currentPlay === null} onClick={() => {
-                                window.open(currentPlay.fileSound, '_blank');
+                                window.open(currentPlay.sound, '_blank');
                             }} type="dashed" size={"small"}
                                     style={{display: "flex", alignItems: "center", justifyContent: "center"}}
                                     shape="circle" icon={<FaDownload style={{fontSize: "15px"}}/>}/>

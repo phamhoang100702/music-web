@@ -27,7 +27,6 @@ const ListSongOfPlaylist = () => {
     (async () => {
       const data = (await getPlaylistByPlaylistId(playlistId)).content;
       setPlaylistDetail(data);
-      console.log("data : ",data);
       const data1 = data.songSet;
       if (data.ownerId === authInfo.id) setListSongOfPlaylist(data1);
       else setListSongOfPlaylist(data1.filter(i => i.status === 2));
@@ -207,7 +206,7 @@ const ListSongOfPlaylist = () => {
                         >
                           {item.singers.map((i, ind) => <span onClick={() => navigate(`/singer-profile/${i.id}`)}
                                                               key={ind}
-                                                              className={"hover-decoration"}>{`${i.title}, `}</span>)}
+                                                              className={"hover-decoration"}>{`${i.name}, `}</span>)}
                         </a>
                       </div>
 

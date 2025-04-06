@@ -23,8 +23,8 @@ const Login = () => {
                 setAlert(infomation.message);
                 setLoading(false);
             } else {
-                console.log(infomation)
                 setLocalStorage("user-token", infomation.content.accessToken);
+                setLocalStorage("refresh-token",infomation.content.refreshToken);
                 const data = await getUserInformation(infomation.content.accessToken);
                 if (data.status != "ok") {
                     setAlert(data.message);

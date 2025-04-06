@@ -34,10 +34,10 @@ const CardSongHistoryOfLibrary = (props) => {
             </div>
           </>
         )}
-        {item.avatar ?
+        {item.thumbnail ?
           (
             <img
-              src={item.avatar}
+              src={item.thumbnail}
               style={{
                 width: "100%",
                 aspectRatio: "1/1",
@@ -68,7 +68,7 @@ const CardSongHistoryOfLibrary = (props) => {
           fontSize: 16,
         }}
       >
-        <span>{item.name}</span>
+        <span>{item.title}</span>
       </a>
       <a
         style={{

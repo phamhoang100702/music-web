@@ -25,11 +25,12 @@ const SingerProfile = () => {
     const [follower, setFollower] = useState({});
     const [following, setFollowing] = useState({})
     const navigate = useNavigate();
+    console.log(singerProfile)
+
     useEffect(() => {
         (async () => {
             setSingerProfile((await getUserById(singerId)).content);
             const tmp = (await getAllSongBySingerId(singerId)).content;
-            console.log("tmp + ", tmp);
             if (authInfo.id === parseInt(singerId)) setTotalTrack(tmp);
             else setTotalTrack(tmp.filter(i => i.visible === true));
             setFollower(await getListFollower(singerId));
@@ -214,7 +215,7 @@ const SingerProfile = () => {
                                 >
                                     <SiGmail fontSize={28}/>{" "}
                                     <span style={{fontSize: 20}}>
-                    Mail - {"email@example.com"}
+                    Mail -  {singerProfile.username}
                   </span>
                                 </a>
                                 <a
@@ -234,7 +235,7 @@ const SingerProfile = () => {
                                 >
                                     <FaClock fontSize={28}/>{" "}
                                     <span style={{fontSize: 20}}>
-                    {/*Joined at: {singerProfile.releasedDate && singerProfile.releasedDate.slice(0, 10)}*/}
+                    Joined at: {singerProfile.createdDate && singerProfile.createdDate.slice(0, 10)}
                   </span>
                                 </a>
                             </div>

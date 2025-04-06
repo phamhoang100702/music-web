@@ -1,0 +1,22 @@
+export const moods = [
+    { label: "Happy", value: "Happy" },
+    { label: "Sad", value: "Sad" },
+    { label: "Energetic", value: "Energetic" },
+    { label: "Chill", value: "Chill" },
+    { label: "Romantic", value: "Romantic" },
+    { label: "Melancholic", value: "Melancholic" },
+    { label: "Angry", value: "Angry" },
+    { label: "Hopeful", value: "Hopeful" },
+    { label: "Dark", value: "Dark" },
+    { label: "Nostalgic", value: "Nostalgic" },
+    { label: "Mysterious", value: "Mysterious" },
+    { label: "Calm", value: "Calm" },
+    { label: "Dreamy", value: "Dreamy" },
+    { label: "Uplifting", value: "Uplifting" },
+    { label: "Epic", value: "Epic" },
+    { label: "Gloomy", value: "Gloomy" },
+    { label: "Relaxing", value: "Relaxing" },
+    { label: "Sensual", value: "Sensual" },
+    { label: "Euphoric", value: "Euphoric" },
+    { label: "Tense", value: "Tense" }
+];

@@ -67,7 +67,6 @@ const ChangeInformation = () => {
             formData.append("user", new Blob([JSON.stringify(objUpdt)], {type: "application/json"}));
             let userInfoUpdated = {};
             userInfoUpdated = (await updateUserWithFormData(formData)).content;
-            console.log("update users", userInfoUpdated);
             dispatch(login(userInfoUpdated));
             form.setFieldsValue({
                 ...userInfoUpdated,

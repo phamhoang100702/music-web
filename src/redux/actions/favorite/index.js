@@ -18,3 +18,9 @@ export const removeOneSongFromFavoritePlaylist = (theSongNeedToRemove) => {
     theSongNeedToRemove: theSongNeedToRemove
   }
 }
+
+export const clearFavoritePlaylist = () => {
+  return {
+    type: "FAVORITE_PLAYLIST_CLEAR"
+  }
+}

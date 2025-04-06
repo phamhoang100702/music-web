@@ -27,7 +27,6 @@ const CardLikedSong = (props) => {
         dispatch(addOneSong(item));
     }
     const handlePlayNow = () => {
-        console.log(item);
         dispatch(playOneSongNow(item));
     }
     const handleUnlike = () => {
@@ -96,7 +95,7 @@ const CardLikedSong = (props) => {
                         </div>
                     </>
                 )}
-                {item.avatar ?
+                {item.thumbnail ?
                     (
                         <img
                             src={item.thumbnail}
@@ -145,7 +144,7 @@ const CardLikedSong = (props) => {
             >
         <span>{item.singers.map((i, ind) => <span key={ind}
                                                   className="display-name-song-of-card-liked-song"
-                                                  onClick={() => navigate(`/singer-profile/${i.id}`)}>{`${i.name} `}</span>)}</span>
+                                                  onClick={() => navigate(`/singer-profile/${i.id}`)}>{`${i.name}, `}</span>)}</span>
             </a>
         </div>
     );

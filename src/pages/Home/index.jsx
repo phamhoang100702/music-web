@@ -17,7 +17,6 @@ import {getTopSongWithMostListensByCategory} from "../../services/api/song/index
 const TopSongByCategory = (props) => {
     const {item, positionDivider} = props;
     const dispatch = useDispatch();
-    console.log("item " + item);
     return (
         <div>
             <Divider orientation={positionDivider} plain>
@@ -164,17 +163,12 @@ const Home = () => {
         (async () => {
             // setPlaylistMainPageList((await getAllMainpagePlayList()).content);
             setListTopSongToday((await countClickByDay()).content);
-            // setListTopSinger((await getTopSinger(10)).content);
+            setListTopSinger((await getTopSinger(10)).content);
             // setListTopSongByCategory((await getTopSongWithMostListensByCategory()).content);
             setListTopSongThisWeek((await countClickByWeek()).content);
             setListTopSongThisMonth((await countClickByMonth()).content);
         })();
     }, []);
-    console.log("song month ", listTopSongThisMonth);
-    console.log("song week ", listTopSongThisWeek);
-
-    console.log("song day ", listTopSongToday);
-
     return (
         <>
             <Row gutter={[0, 15]} justify={"center"}>

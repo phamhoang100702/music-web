@@ -12,10 +12,7 @@ const GetAvatarSource = (props) => {
     const {item} = props;
     const [avatarSrc, setAvatarSrc] = useState("https://w7.pngwing.com/pngs/365/675/png-transparent-spotify-playlist-things-to-ruin-the-songs-of-joe-iconis-original-cast-recording-be-more-chill-black-and-white-spotify-logo-area-symbol-spotify.png");
     useEffect(() => {
-        (async () => {
-            const data = (await getAllSongByPlaylistId(item.id)).content[0].avatar;
-            if (data) setAvatarSrc(data);
-        })();
+        setAvatarSrc(item.thumbnail);
     }, []);
     return (
         <Avatar

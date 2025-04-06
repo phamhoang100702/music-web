@@ -2,7 +2,7 @@ import {Col, Divider, List, Row} from "antd";
 import {useEffect, useState} from "react";
 import CardSongEditOfSinger from "../CardSongEditOfSinger";
 import {useSelector} from "react-redux";
-import {getAllSongByCreatorId} from "../../../services/api/song/index.js";
+import {getAllSongByCreatorId, getSongsByCreator} from "../../../services/api/song/index.js";
 
 const ManageTracksOfSinger = (props) => {
   const {reload} = props;
@@ -10,7 +10,7 @@ const ManageTracksOfSinger = (props) => {
   const [listTrack, setListTrack] = useState([]);
   useEffect(() => {
     (async () => {
-      setListTrack((await getAllSongByCreatorId(authInfo.id)).content)
+      setListTrack((await getSongsByCreator()).content)
     })()
   }, [authInfo.id, reload]);
   return (

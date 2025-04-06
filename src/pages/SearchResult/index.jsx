@@ -1,9 +1,10 @@
-import {Col, ConfigProvider, Row, Tabs} from "antd";
+import {Col, ConfigProvider, Pagination, Row, Tabs} from "antd";
 import "./style.css";
 import ListSearchResultSong from "../../components/UI/ListSearchResultSong";
 import ListSearchResultSinger from "../../components/UI/ListSearchResultSinger";
 import ListSearchResultPlaylist from "../../components/UI/ListSearchResultPlaylist";
 import SearchInputSelect from "../../components/UI/SearchInputSelect/index.jsx";
+import {useState} from "react";
 
 const items = [
   {
@@ -22,7 +23,9 @@ const items = [
     children: <ListSearchResultPlaylist/>,
   }
 ];
+
 const SearchResult = () => {
+
   return (
     <>
       <Row justify={"center"}>

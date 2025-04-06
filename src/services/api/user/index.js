@@ -8,10 +8,6 @@ export const getUserById = async (id) => {
     return await get(`user/${id}`);
 }
 
-export const updateUser = async (obj) => {
-    return await put(`user`, obj);
-}
-
 export const updateUserWithFormData = async (obj) => {
     return await put_form_data('user/change-information', obj);
 }
@@ -30,3 +26,4 @@ export const getUserInformation = async (token) => {
         token: token
     })
 }
+

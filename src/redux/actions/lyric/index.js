@@ -18,3 +18,9 @@ export const changeCurrentLyricDisplay = (currentTime) => {
     currentTime: currentTime
   }
 }
+
+export const clearLyric = () => {
+  return {
+    type: "CLEAR_LYRIC"
+  }
+}

@@ -13,7 +13,7 @@ const CardPlaylistOfLibrary = (props) => {
   const {item} = props;
   const [isHovered, setIsHovered] = useState(false);
   const [allSong, setAllSong] = useState({});
-  const [isPublic, setIsPublic] = useState(item.status);
+  const [isPublic, setIsPublic] = useState(item.visible);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const statusPlaylistChangeTo = (targetStatus) => {
@@ -21,7 +21,7 @@ const CardPlaylistOfLibrary = (props) => {
       const playlistAfterUpdate = (await updatePlaylist({
         id: item.id,
         name: item.name,
-        status: targetStatus
+        visible: targetStatus
       })).content;
       dispatch(updateOnePlaylistOfListPlaylist(playlistAfterUpdate));
       setIsPublic(!isPublic);
@@ -126,10 +126,10 @@ const CardPlaylistOfLibrary = (props) => {
             </div>
           </>
         )}
-        {allSong.content && allSong.content[0].thumbnail ?
+        {item.thumbnail ?
           (
             <img
-              src={allSong.content[0].avatar}
+              src={item.thumbnail}
               style={{
                 width: "100%",
                 aspectRatio: "1/1",

@@ -18,3 +18,7 @@ export const userLogin = async (options) => {
 export const userRegister = async (options) => {
     return await post("register", options);
 }
+
+export const getAccessToken = async (token) => {
+    return await post(`get-token?token=${token}`);
+}

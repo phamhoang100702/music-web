@@ -25,7 +25,6 @@ export const getFavoritePlaylistByUserId = async () => {
 };
 
 export const getAllPlaylistByUserId = async (userId) => {
-  console.log("userId + ", userId);
   return await get(`playlist/get-owned-playlist/${userId}`);
 };
 
@@ -34,7 +33,7 @@ export const getAllMainpagePlayList = async () => {
   return await get("playlist/mainpage");
 };
 // search for user
-export const searchAllPlaylistByNameForUser = async (keyword = "",page = 0, size = 10) => {
+export const searchAllPlaylistByNameForUser = async (keyword = "",page = null, size = null) => {
   return await get(`playlist?keyword=${keyword}&size=${size}&page=${page}`);
 };
 

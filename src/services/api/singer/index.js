@@ -5,9 +5,13 @@ export const updateSinger = async (object = {}) => {
     return await put("user", object);
 };
 
-export const getAllActiveSinger = async (name = "", page = 0, size = 10) => {
-    return await get(`user/singer?name=${encodeURIComponent(name)}&page=${page}&size=${size}`);
-};
+export const getAllSinger = async (name ) => {
+    return await get(`user/singer/get-all`)
+}
+
+export const searchSingersByKeyword = async (keyword = "", page = null, size = null) => {
+    return await get(`user/singer?keyword=${keyword}&page=${page}&size=${size}`);
+}
 
 
 export const uploadAvatar = async (formData) => {
@@ -15,7 +19,7 @@ export const uploadAvatar = async (formData) => {
 };
 // top singer
 export const getTopSinger = async (top) => {
-    return await get(`singer/top/${top}`);
+    return await get(`follower/top-singer/${top}`);
 };
 
 export const getFollowedSinger = async (id) => {

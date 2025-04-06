@@ -5,23 +5,26 @@ import {FaCaretDown, FaPowerOff, FaUser} from "react-icons/fa";
 import FooterUserLayoutAudioPlayer from "../../UI/FooterUserLayoutAudioPlayer";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {updateFavoritePlaylist} from "../../../redux/actions/favorite/index.js";
+import {clearFavoritePlaylist, updateFavoritePlaylist} from "../../../redux/actions/favorite/index.js";
 import {
     getAllPlaylistByUserId,
     getAllSongByPlaylistId,
     getFavoritePlaylistByUserId,
 } from "../../../services/api/playlist/index.js";
-import {updateListPlaylist} from "../../../redux/actions/playlist/index.js";
+import {clearPlaylist, updateListPlaylist} from "../../../redux/actions/playlist/index.js";
 import LyricArea from "../../UI/LyricArea/index.jsx";
 import {FaGear} from "react-icons/fa6";
 import {clearQueue} from "../../../redux/actions/songQueue/index.js";
-import {deleteLocalStorage, getLocalStorage} from "../../../services/localStorage/index.js";
+import {deleteLocalStorage, getLocalStorage, setLocalStorage} from "../../../services/localStorage/index.js";
 import {login} from "../../../redux/actions/auth/index.js";
 import {getUserInformation} from "../../../services/api/user/index.js";
+import {getAccessToken} from "../../../services/api/auth/index.js";
+import {clearSingerQueue} from "../../../redux/actions/singer/index.js";
+import {clearLyric} from "../../../redux/actions/lyric/index.js";
 
 const UserLayout = () => {
     const navigate = useNavigate();
-    const authInfo = useSelector((state) => state.auth);
+    let authInfo = useSelector(state => state.auth);
     const [view, setView] = useState(false);
     const dispatch = useDispatch();
     const items = [
@@ -83,6 +86,10 @@ const UserLayout = () => {
                     }}
                     onClick={() => {
                         dispatch(clearQueue());
+                        dispatch(clearSingerQueue());
+                        dispatch(clearPlaylist());
+                        dispatch((clearLyric()));
+                        dispatch(clearFavoritePlaylist());
                         deleteLocalStorage('user-token')
                         navigate(`/login`);
                     }}
@@ -105,8 +112,18 @@ const UserLayout = () => {
             (async () => {
                 if (authInfo.id == null) {
                     const dataS = await getUserInformation(getLocalStorage('user-token'))
-                    dispatch(login(dataS.content))
-                    console.log("ok nay ", authInfo)
+                    if (dataS) {
+                        dispatch(login(dataS.content));
+                    } else {
+                        const dataRefresh = await getAccessToken(getLocalStorage('refresh-token'));
+                        if (dataRefresh) {
+                            setLocalStorage('user-token', dataRefresh.content.accessToken);
+                        } else {
+                            localStorage.removeItem("user-token");
+                            localStorage.removeItem("refresh-token");
+                            navigate("/login");
+                        }
+                    }
                     setView(true);
                     const data = await getAllSongByPlaylistId(
                         (
@@ -189,7 +206,7 @@ const UserLayout = () => {
                                         </NavLink>
                                     </Col>
                                     <Col span={13}></Col>
-                                    {authInfo.roles.includes("SINGER") && authInfo.status === true ? (
+                                    {authInfo.roles.includes("SINGER") ? (
                                         <Col
                                             span={3}
                                             style={{
